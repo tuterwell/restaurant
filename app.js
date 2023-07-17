@@ -2,7 +2,6 @@ const express = require('express')
 const {engine} = require('express-handlebars')
 const app = express()
 const port = 3000
-const restaurant = require('./public/jsons/restaurant.json').results
 
 const db = require('./models')
 const Restaurant = db.restaurant
@@ -18,15 +17,22 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurant', (req, res) => {
-    const keyword = req.query.keyword?.trim()
-    const matchRestaurant = keyword ? restaurant.filter((r) => 
-    Object.values(r).some((candidate) =>{
-        if (typeof candidate === 'string'){
-            return candidate.toLowerCase().includes(keyword.toLowerCase())
-        }
-        return false
-    }) ): restaurant
-    res.render('index',{ restaurant: matchRestaurant, keyword: keyword })
+    return Restaurant.findAll({attributes: ['id', 'name','name_en','category',
+'image', 'location', 'phone', 'google_map', 'rating', 'description'], raw: true})
+         .then((restaurants) => {
+            const keyword = req.query.keyword?.trim()
+            const matchRestaurant = keyword ? restaurants.filter((r) => 
+            Object.values(r).some((candidate) =>{
+                if (typeof candidate === 'string'){
+                    return candidate.toLowerCase().includes(keyword.toLowerCase())
+                }
+                return false
+            }) ): restaurants
+            res.render('index',{ restaurant: matchRestaurant, keyword: keyword })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }) // get all restaurants
 
 app.get('/restaurant/new', (req, res) => {
