@@ -4,6 +4,9 @@ const app = express()
 const port = 3000
 const restaurant = require('./public/jsons/restaurant.json').results
 
+const db = require('./models')
+const Restaurant = db.restaurant
+
 app.engine('.hbs', engine({extname : '.hbs'}))
 app.set('view engine', '.hbs')
 app.set('views', './views')
