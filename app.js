@@ -119,7 +119,10 @@ app.put('/restaurant/:id', (req, res) => {
 }) // modify restaurant
 
 app.delete('/restaurant/:id', (req, res) => {
-    res.send('delete')
+    const id = req.params.id
+    return Restaurant.destroy({
+        where: { id: id }
+    }).then(() => res.redirect('/restaurant'))
 }) // delete restaurant
 
 app.listen(port, () => {

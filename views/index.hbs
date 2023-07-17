@@ -38,6 +38,9 @@
               <br>
                 <a href="/restaurant/{{r.id}}">detail</a>
               <a href="/restaurant/{{r.id}}/edit">edit</a>
+              <form action="/restaurant/{{r.id}}?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">delete</button>
+              </form>
 
             </div>
         </div>
