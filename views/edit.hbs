@@ -1,0 +1,40 @@
+<form action="/restaurant/{{restaurant.id}}?_method=PUT" method="POST">
+    <b align="center">restaurant name</b>
+    <input type="text" placeholder="restaurant name" name="name" 
+    value="{{restaurant.name}}">
+    <br>
+    <b>restaurant name in English</b>
+    <input type="text" placeholder="restaurant name in English" 
+    name="name_en" value="{{restaurant.name_en}}">
+    <br>
+    <b>category</b>
+    <input type="text" placeholder="category" name="category"
+    value="{{restaurant.category}}">
+    <br>
+    <b>image</b>
+    <input type="text" placeholder="image" name="image"
+    value="{{restaurant.image}}">
+    <br>
+    <b>location</b>
+    <input type="text" placeholder="location" name="location"
+    value="{{restaurant.location}}">
+    <br>
+    <b>phone</b>
+    <input type="text" placeholder="phone" name="phone"
+    value="{{restaurant.phone}}">
+    <br>
+    <b>google map link</b>
+    <input type="text" placeholder="google map link" name="google_map_link"
+    value="{{restaurant.google_map_link}}">
+    <br>
+    <b>rating</b>
+    <input type="text" placeholder="rating" name="rating"
+    value="{{restaurant.rating}}">
+    <br>
+    <b>description</b>
+    <input type="text" placeholder="description" name="description"
+    value="{{restaurant.description}}">
+    <br>
+    <button type="submit" align ="center">Save</button>
+    <a href="/restaurant">back</a>
+</form>

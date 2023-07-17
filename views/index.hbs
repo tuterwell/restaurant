@@ -20,7 +20,7 @@
 <div class="row" id="data-panel">
     {{#each restaurant as |r|}}
     <div class="col-12 col-sm-6 col-md-4">
-      <a href="/restaurant/{{r.id}}" class="text-secondary">
+      
         <div class="card mb-3">
           <img class="card-img-top" src="{{r.image}}"
             alt={{r.name}}/>
@@ -35,10 +35,13 @@
                 {{r.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
+              <br>
+                <a href="/restaurant/{{r.id}}">detail</a>
+              <a href="/restaurant/{{r.id}}/edit">edit</a>
 
             </div>
         </div>
-      </a>
+   
     </div>
     {{/each}}
 </div>
